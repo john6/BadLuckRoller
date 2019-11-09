@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class LuckObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int luckValue;
+    [SerializeField] private string actionText;
+
+    protected void AlterLuck()
     {
-        
+        // TODO
     }
 
-    // Update is called once per frame
-    void Update()
+    public string GetMessage()
     {
-        
+        return actionText + ": luck" + (luckValue > 0 ? "+" : "-") + Mathf.Abs(luckValue);
     }
 }

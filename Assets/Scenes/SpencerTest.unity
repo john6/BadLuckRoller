@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 915175535}
   - component: {fileID: 915175534}
   m_Layer: 0
-  m_Name: JeffBezos
+  m_Name: GordonFreeman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,10 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookSensitivity: 10
-  maxPitch: 89
-  minPitch: -89
+  maxPitch: 85
+  minPitch: -85
   launchSpeed: 5
-  spread: 0
+  spread: 1
   die: {fileID: 1090436359391449780, guid: ddda55451f70e41269b040f3b04bada6, type: 3}
   dieSpawnPosition: {fileID: 1064401726}
 --- !u!65 &915175535

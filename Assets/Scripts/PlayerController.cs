@@ -12,12 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         float x = Input.GetAxis("Mouse X");
@@ -41,7 +35,12 @@ public class PlayerController : MonoBehaviour
     {
         GameObject obj = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
         Rigidbody body = obj.GetComponent<Rigidbody>();
-        Vector3 velocity = transform.forward * launchSpeed;
+        Vector3 velocity = transform.forward * (launchSpeed + Random.Range(-spread, spread));
+        body.velocity = velocity;
+
+        obj = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
+        body = obj.GetComponent<Rigidbody>();
+        velocity = transform.forward * (launchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
     }
 }
