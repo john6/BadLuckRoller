@@ -9,6 +9,7 @@ public class LuckObject : MonoBehaviour
 
     protected void AlterLuck()
     {
+        Debug.Log("AlterLuck");
         // TODO
     }
 
