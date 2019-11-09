@@ -7,11 +7,11 @@ public class BlackCat : LuckObject
     [SerializeField] private float moveSpeed;
     [SerializeField] private float stopDistance;
 
-    private Animator animator;
+    //private Animator animator;
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -29,7 +29,7 @@ public class BlackCat : LuckObject
 
     private IEnumerator MoveToImpl(Vector3 position)
     {
-        animator.SetBool("Moving", true);
+        //animator.SetBool("Moving", true);
 
         while (Vector3.Distance(transform.position, position) > stopDistance)
         {
@@ -37,6 +37,6 @@ public class BlackCat : LuckObject
             yield return null;
         }
 
-        animator.SetBool("Moving", false);
+        //animator.SetBool("Moving", false);
     }
 }
