@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 2347765939340414016}
   - component: {fileID: 6442874828877737145}
   - component: {fileID: 7253928443164339548}
+  - component: {fileID: 1383467915466933013}
   m_Layer: 0
-  m_Name: SaltShaker
+  m_Name: SaltShakerTheBest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,3 +111,20 @@ CapsuleCollider:
   m_Height: 0.03478259
   m_Direction: 1
   m_Center: {x: -0.00000011594966, y: 0.017391294, z: 0.00000009080395}
+--- !u!114 &1383467915466933013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082555541513549980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7d0591678104dd08c747b81751e5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  luckValue: -1
+  actionText: Salt Spilled
+  spillParticle: {fileID: 0}
+  spillSpawnPoint: {fileID: 0}
+  tiltThreshold: 0.3
