@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         currLaunchSpeed = 0;
         currLaunchCharge = 0.1f;
         maxLaunchSpeed = 25;
