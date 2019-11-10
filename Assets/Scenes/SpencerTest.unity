@@ -1252,18 +1252,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1962768208 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1962768208, guid: 93fcbf404b2024eb7b67f5e69a53b7fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1327847926978517245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &802243248468925804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1340,7 +1328,7 @@ PrefabInstance:
         type: 3}
       propertyPath: chargeMeter
       value: 
-      objectReference: {fileID: 1962768208}
+      objectReference: {fileID: 1327847926978517246}
     - target: {fileID: 1542835076769493121, guid: fc7d2c08bfdc2dc40935d16390588c99,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1467,6 +1455,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93fcbf404b2024eb7b67f5e69a53b7fc, type: 3}
+--- !u!114 &1327847926978517246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7256169896369375547, guid: 93fcbf404b2024eb7b67f5e69a53b7fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1327847926978517245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3471452293148930975
 PrefabInstance:
   m_ObjectHideFlags: 0

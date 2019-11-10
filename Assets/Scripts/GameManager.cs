@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
         if (numThrown < threeStarPar) ++numStars;
         if (numThrown < twoStarPar) ++numStars;
         if (numThrown < oneStarPar) ++numStars;
+        if (roll == 13) numStars = 3;
 
         for (int i = 0; i < numStars; ++i)
         {
