@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,19 +8,31 @@ using UnityEngine.UI;
 public class NPCDialogue: MonoBehaviour
 {
     [SerializeField] private Text customText;
-    void OnTriggerEnter(Collider other)
+    [SerializeField] private float duration;
+
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Dice"))
+        Debug.Log("OnCollision");
+        if (other.gameObject.CompareTag("Dice"))
         {
+            Debug.Log("Dice");
             customText.enabled = true;
+            StartCoroutine(StayUp());
         }
     }
-    void OnTriggerExit(Collider other)
+
+    private IEnumerator StayUp()
     {
-        if (other.CompareTag("Dice"))
-        {
-            customText.enabled = false;
-        }
+        yield return new WaitForSeconds(duration);
+        customText.enabled = false;
     }
+
+    //void OnCollisionExit(Collision other)
+    //{
+    //    if (other.gameObject.CompareTag("Dice"))
+    //    {
+    //        customText.enabled = false;
+    //    }
+    //}
 
 }
