@@ -15,7 +15,12 @@ public class SaltShaker : LuckObject
         if (!hasSpilled && IsTooTilted())
         {
             hasSpilled = true;
-            Instantiate(spillParticle, spillSpawnPoint.position, Quaternion.identity);
+
+            if (spillParticle != null)
+            {
+                Instantiate(spillParticle, spillSpawnPoint.position, Quaternion.identity);
+            }
+
             AlterLuck();
         }
     }
