@@ -44,10 +44,7 @@ public class DieCamera : MonoBehaviour
                 dieLastPosition.y = currDie.transform.position.y + distanceFromObject * 2;
                 transform.position = Vector3.Lerp(transform.position, dieLastPosition, Time.deltaTime * smoothing);
             }
-
-           
- 
-                if (currDie.GetComponent<Rigidbody>().velocity == Vector3.zero)
+           if (currDie.GetComponent<Rigidbody>().velocity == Vector3.zero)
             {
                 Time.timeScale = 1f;
                 viewingDie = false;
@@ -62,5 +59,6 @@ public class DieCamera : MonoBehaviour
         currDie = dieObj;
         viewingDie = true;
         camera.enabled = true;
+        camera.transform.position = Camera.main.transform.position;
     }
 }

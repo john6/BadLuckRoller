@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxPitch;
     [SerializeField] private float minPitch;
     [SerializeField] private float currLaunchSpeed;
-    [SerializeField] private float currLaunchCharge;
-    [SerializeField] private float maxLaunchSpeed;
+    [SerializeField] private float currLaunchCharge = 0.1f;
+    [SerializeField] private float maxLaunchSpeed = 25;
     [SerializeField] private Image chargeMeter;
     [SerializeField] private float spread;
     [SerializeField] private GameObject die;
@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
         dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
         Cursor.lockState = CursorLockMode.Locked;
         currLaunchSpeed = 0;
-        currLaunchCharge = 0.1f;
-        maxLaunchSpeed = 25;
     }
 
     void Update()
