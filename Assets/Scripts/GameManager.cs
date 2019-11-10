@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
         int roll = luck <= -10 ? 13 : 7;
         ShowRoll(roll);
         winScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
 
         int numStars = 0;
         if (numThrown < threeStarPar) ++numStars;
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour
     {
         ShowRoll(winningRoll);
         lossScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void DoNeutral(PlayerController player)
