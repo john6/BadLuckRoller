@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Umbrella : MonoBehaviour
+public class Umbrella : LuckObject
 {
+    [SerializeField] private Mesh openRenderMesh;
+    [SerializeField] private Mesh openColliderMesh;
+    [SerializeField] private Vector3 bounceVelocity;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool open;
+
+    void OnCollisionExit(Collision collision)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (collision.gameObject.CompareTag("Dice"))
+        {
+            if (!open)
+            {
+                open = true;
+                MeshFilter filter = GetComponent<MeshFilter>();
+                filter.mesh = openRenderMesh;
+                MeshCollider collider = GetComponent<MeshCollider>();
+                collider.sharedMesh = openColliderMesh;
+            }
+            else
+            {
+                collision.rigidbody.velocity = bounceVelocity;
+            }
+        }
     }
 }
