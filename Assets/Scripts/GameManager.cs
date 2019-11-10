@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int winningRoll;
     [SerializeField] private int numThrows;
+    [SerializeField] private Image[] diceImages;
     [SerializeField] private int oneStarPar;
     [SerializeField] private int twoStarPar;
     [SerializeField] private int threeStarPar;
@@ -58,6 +59,14 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         luck = startingLuck;
+        for (int i = 0; i < numThrows - numThrown; ++i)
+        {
+            diceImages[i].gameObject.SetActive(true);
+        }
+        for (int i = numThrows - numThrown; i < diceImages.Length; ++i)
+        {
+            diceImages[i].gameObject.SetActive(false);
+        }
     }
 
     public void AlterLuck(int luckChange, string message)
@@ -72,6 +81,14 @@ public class GameManager : MonoBehaviour
     public void OnDiceThrown(PlayerController player, params GameObject[] dice)
     {
         ++numThrown;
+        for (int i = 0; i < numThrows - numThrown; ++i)
+        {
+            diceImages[i].gameObject.SetActive(true);
+        }
+        for (int i = numThrows - numThrown; i < diceImages.Length; ++i)
+        {
+            diceImages[i].gameObject.SetActive(false);
+        }
         player.enabled = false;
 
         StartCoroutine(ShowRoll(player, dice));
@@ -113,13 +130,15 @@ public class GameManager : MonoBehaviour
 
     private void DoWin()
     {
-        ShowRoll(7);
+        int roll = luck <= -10 ? 13 : 7;
+        ShowRoll(roll);
         winScreen.SetActive(true);
 
         int numStars = 0;
         if (numThrown < threeStarPar) ++numStars;
         if (numThrown < twoStarPar) ++numStars;
         if (numThrown < oneStarPar) ++numStars;
+        if (roll == 13) numStars = 3;
 
         for (int i = 0; i < numStars; ++i)
         {
@@ -158,7 +177,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowRoll(int roll)
     {
-        int die1 = Random.Range(1, roll);
+        int die1 = Random.Range(1, Mathf.Min(roll, 7));
         die1Text.text = "" + die1;
         die2Text.text = "" + (roll - die1);
     }
