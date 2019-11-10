@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8945835474539217036}
   - component: {fileID: -3705176002286923619}
+  - component: {fileID: 6192558742510456364}
   m_Layer: 0
   m_Name: ScissorsClosed
   m_TagString: Untagged
@@ -200,5 +201,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.059823632, y: 0.0765583, z: 0.046085}
+  m_Center: {x: -0.012554801, y: 0.011720846, z: 0.006753132}
+--- !u!114 &6192558742510456364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198574170011875420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d3c9f1fc8ca4b6d9c648f6851ea65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  luckValue: -1
+  actionText: Scissors opened and closed without making a cut. In some cultures, opening
+    and closing a pair of scissors without cutting anything is considered an omen
+    of bad luck. If you're going to open scissors, make sure you have a piece of paper
+    handy to cut with them, otherwise you'll be stuck having to choose between bad
+    luck or just leaving them open sitting out on the table, which could be bad luck
+    in its own way.
+  blade1: {fileID: 386262240041716914}
+  blade2: {fileID: 7540476503647688670}
+  openAngle1: {x: 0, y: 18.55, z: 0}
+  openAngle2: {x: -180, y: 9.18, z: -1.52}
+  closedAngle1: {x: 0, y: 0, z: 0}
+  closedAngle2: {x: -180, y: 9.18, z: -1.52}
+  bounceVelocity: {x: 0, y: 20, z: 0}
