@@ -69,21 +69,12 @@ public class GameManager : MonoBehaviour
         Destroy(text.gameObject, luckMessageDuration);
     }
 
-    public void OnDiceThrown(GameObject[] dice)
+    public void OnDiceThrown(PlayerController player, params GameObject[] dice)
     {
         ++numThrown;
-        if (luck <= 0)
-        {
-            StartCoroutine(DoWin(dice));
-        }
-        else if (numThrown >= numThrows)
-        {
-            StartCoroutine(DoLoss(dice));
-        }
-        else
-        {
-            StartCoroutine(DoNeutral(dice));
-        }
+        player.enabled = false;
+
+        StartCoroutine(ShowRoll(player, dice));
     }
 
     public void ReloadScene()
@@ -96,9 +87,33 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-    private IEnumerator DoWin(GameObject[] dice)
+    private IEnumerator ShowRoll(PlayerController player, GameObject[] dice)
     {
-        yield return StartCoroutine(ShowRoll(dice, 7));
+        Rigidbody b1 = dice[0].GetComponent<Rigidbody>();
+        Rigidbody b2 = dice[1].GetComponent<Rigidbody>();
+
+        while (b1.velocity.magnitude > 0.1f || b2.velocity.magnitude > 0.1f)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        if (luck <= 0)
+        {
+            DoWin();
+        }
+        else if (numThrown >= numThrows)
+        {
+            DoLoss();
+        }
+        else
+        {
+            DoNeutral(player);
+        }
+    }
+
+    private void DoWin()
+    {
+        ShowRoll(7);
         winScreen.SetActive(true);
 
         int numStars = 0;
@@ -116,13 +131,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DoLoss(GameObject[] dice)
+    private void DoLoss()
     {
-        yield return StartCoroutine(ShowRoll(dice, winningRoll));
-        lossScreen.SetActive(false);
+        ShowRoll(winningRoll);
+        lossScreen.SetActive(true);
     }
 
-    private IEnumerator DoNeutral(GameObject[] dice)
+    private void DoNeutral(PlayerController player)
     {
         List<int> possibles = new List<int>();
         for (int i = 2; i <= 12; ++i)
@@ -136,20 +151,14 @@ public class GameManager : MonoBehaviour
             }
         }
         int roll = Random.Range(0, possibles.Count);
-        yield return StartCoroutine(ShowRoll(dice, possibles[roll]));
+        ShowRoll(possibles[roll]);
+
+        player.enabled = true;
     }
 
-    private IEnumerator ShowRoll(GameObject[] dice, int roll)
+    private void ShowRoll(int roll)
     {
-        Rigidbody b1 = dice[0].GetComponent<Rigidbody>();
-        Rigidbody b2 = dice[1].GetComponent<Rigidbody>();
-
-        while (b1.velocity.magnitude > 0.1f || b2.velocity.magnitude > 0.1f)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-
-        int die1 = Random.Range(1, Mathf.Min(roll, 7));
+        int die1 = Random.Range(1, roll);
         die1Text.text = "" + die1;
         die2Text.text = "" + (roll - die1);
     }

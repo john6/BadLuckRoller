@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
 
-
     public void Start()
     {
         currLaunchSpeed = 0;
@@ -48,7 +47,7 @@ public class PlayerController : MonoBehaviour
         float launchCharge = 3.14f;
         while (!Input.GetButtonUp("Fire1"))
         {
-            launchCharge += currLaunchCharge ;
+            launchCharge += currLaunchCharge;
             currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
             ChargeMeter.GetComponent<Text>().text = "Charge At " + Mathf.RoundToInt((currLaunchSpeed / maxLaunchSpeed) * 100) + "%";
             yield return null;
@@ -58,16 +57,18 @@ public class PlayerController : MonoBehaviour
 
     private void Launch()
     {
-        GameObject obj = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
+        GameObject obj1 = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
         //obj.GetComponent<Die>().ViewFollowDie();
-        Rigidbody body = obj.GetComponent<Rigidbody>();
+        Rigidbody body = obj1.GetComponent<Rigidbody>();
         Vector3 velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
 
-        obj = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
-        body = obj.GetComponent<Rigidbody>();
+        GameObject obj2 = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
+        body = obj2.GetComponent<Rigidbody>();
         velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
+
         ChargeMeter.GetComponent<Text>().text = "Charge At 0%";
+        GameManager.instance.OnDiceThrown(this, obj1, obj2);
     }
 }

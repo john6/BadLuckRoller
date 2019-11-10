@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   luckValue: -1
-  actionText: Bread Flipped
+  actionText: Bun Flipped
   flipForce: 2
   bounceVelocity: {x: 0, y: 10, z: 0}
