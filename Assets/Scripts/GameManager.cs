@@ -113,7 +113,8 @@ public class GameManager : MonoBehaviour
 
     private void DoWin()
     {
-        ShowRoll(7);
+        int roll = luck <= -10 ? 13 : 7;
+        ShowRoll(roll);
         winScreen.SetActive(true);
 
         int numStars = 0;
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowRoll(int roll)
     {
-        int die1 = Random.Range(1, roll);
+        int die1 = Random.Range(1, Mathf.Min(roll, 7));
         die1Text.text = "" + die1;
         die2Text.text = "" + (roll - die1);
     }
