@@ -22,6 +22,7 @@ public class CatnipShaker : MonoBehaviour
                 Instantiate(spillParticle, spillSpawnPoint.position, Quaternion.identity);
             }
 
+            AudioManager.instance.Play("Bones");
             BlackCat[] cats = FindObjectsOfType<BlackCat>();
             for (int i = 0; i < cats.Length; ++i)
             {

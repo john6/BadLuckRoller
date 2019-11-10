@@ -12,6 +12,7 @@ public class Mirror : LuckObject
         if (collision.gameObject.CompareTag("Dice"))
         {
             Break(collision.contacts[0].point);
+            AudioManager.instance.Play("Mirror");
         }
     }
 

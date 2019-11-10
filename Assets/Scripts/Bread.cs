@@ -25,6 +25,7 @@ public class Bread : LuckObject
             Vector3 v = new Vector3(b.min.x, transform.position.y, transform.position.z);
             body.AddForceAtPosition(Vector3.up * flipForce, v, ForceMode.VelocityChange);
             collision.rigidbody.velocity = bounceVelocity;
+            AudioManager.instance.Play("Bread");
         }
     }
 

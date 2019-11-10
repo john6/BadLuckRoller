@@ -21,6 +21,8 @@ public class Scissors : LuckObject
             m_open = value;
             blade1.rotation = Quaternion.Euler(value ? openAngle1 : closedAngle1);
             blade2.rotation = Quaternion.Euler(value ? openAngle2 : closedAngle2);
+            AudioManager.instance.Play("Scissors");
+            AudioManager.instance.Play("Bread");
         }
     }
 
