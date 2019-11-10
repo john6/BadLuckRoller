@@ -5074,6 +5074,11 @@ PrefabInstance:
       propertyPath: maxLaunchSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1542835076769493121, guid: fc7d2c08bfdc2dc40935d16390588c99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7d2c08bfdc2dc40935d16390588c99, type: 3}
 --- !u!1001 &1061990758
