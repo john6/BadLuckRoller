@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxPitch;
     [SerializeField] private float minPitch;
     [SerializeField] private float currLaunchSpeed;
+    [SerializeField] private float currLaunchCharge;
     [SerializeField] private float maxLaunchSpeed;
     [SerializeField] private GameObject ChargeMeter;
     [SerializeField] private float spread;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         currLaunchSpeed = 0;
+        currLaunchCharge = 0.1f;
         maxLaunchSpeed = 25;
     }
 
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
         float launchCharge = 3.14f;
         while (!Input.GetButtonUp("Fire1"))
         {
-            launchCharge += 0.1f;
+            launchCharge += currLaunchCharge ;
             currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
             ChargeMeter.GetComponent<Text>().text = "Charge At " + Mathf.RoundToInt((currLaunchSpeed / maxLaunchSpeed) * 100) + "%";
             yield return null;
