@@ -15,6 +15,7 @@ public class Umbrella : LuckObject
         if (collision.gameObject.CompareTag("Dice"))
         {
             if (!open)
+
             {
                 open = true;
                 MeshFilter filter = GetComponent<MeshFilter>();
@@ -22,6 +23,7 @@ public class Umbrella : LuckObject
                 MeshCollider collider = GetComponent<MeshCollider>();
                 collider.sharedMesh = openColliderMesh;
                 collider.material = openMaterial;
+                AudioManager.instance.Play("Umbrella");
             }
         }
     }

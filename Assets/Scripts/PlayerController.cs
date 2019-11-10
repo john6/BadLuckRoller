@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
             currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
             chargeMeter.fillAmount = currLaunchSpeed / maxLaunchSpeed;
             yield return null;
+            
         }
         Launch();
     }
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour
         dieCamera.AttachToDie(obj1);
         Vector3 velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
+        AudioManager.instance.Play("DiceShake");
 
         GameObject obj2 = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
         body = obj2.GetComponent<Rigidbody>();
