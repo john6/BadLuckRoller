@@ -136,9 +136,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         int numStars = 0;
-        if (numThrown < threeStarPar) ++numStars;
-        if (numThrown < twoStarPar) ++numStars;
-        if (numThrown < oneStarPar) ++numStars;
+        if (numThrown <= threeStarPar) ++numStars;
+        if (numThrown <= twoStarPar) ++numStars;
+        if (numThrown <= oneStarPar) ++numStars;
         if (roll == 13) numStars = 3;
 
         for (int i = 0; i < numStars; ++i)
