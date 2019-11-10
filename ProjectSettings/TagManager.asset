@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dice
   - CatBadLuckZone
+  - DieCamera
+  - ChargeText
   layers:
   - Default
   - TransparentFX
