@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8520500359064671774}
   - component: {fileID: 821312447526497320}
   - component: {fileID: 6366236347764019409}
+  - component: {fileID: 4285335404731733542}
   m_Layer: 0
   m_Name: CrapsTableFBX
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4640321932082127885}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.34470394, z: 1}
+  m_LocalScale: {x: 124, y: 43, z: 124}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4285335404731733542
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640321932082127885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4068373912626513877, guid: b3ca3b551e1ec0e4aae5da3e225ddb26, type: 3}
