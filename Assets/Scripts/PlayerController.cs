@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float spread;
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
+    [SerializeField] DieCamera dieCamera;
 
     public void Start()
     {
+        dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
         currLaunchSpeed = 0;
         currLaunchCharge = 0.1f;
         maxLaunchSpeed = 25;
@@ -58,8 +60,8 @@ public class PlayerController : MonoBehaviour
     private void Launch()
     {
         GameObject obj1 = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
-        //obj.GetComponent<Die>().ViewFollowDie();
         Rigidbody body = obj1.GetComponent<Rigidbody>();
+        dieCamera.AttachToDie(obj1);
         Vector3 velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
 
@@ -67,7 +69,6 @@ public class PlayerController : MonoBehaviour
         body = obj2.GetComponent<Rigidbody>();
         velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
-
         ChargeMeter.GetComponent<Text>().text = "Charge At 0%";
         GameManager.instance.OnDiceThrown(this, obj1, obj2);
     }
