@@ -17,6 +17,9 @@ public class Mirror : LuckObject
 
     private void Break(Vector3 point)
     {
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
+
         Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
         for (int i = 0; i < bodies.Length; ++i)
         {
