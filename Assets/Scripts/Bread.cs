@@ -9,6 +9,7 @@ public class Bread : LuckObject
 
     private Rigidbody body;
     private Collider collider;
+    private bool flipped;
 
     void Awake()
     {
@@ -27,12 +28,11 @@ public class Bread : LuckObject
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void Update()
     {
-        ContactPoint contact = collision.contacts[0];
-        if (Vector3.Dot(contact.normal, Vector3.up) > 0.7 &&
-            Vector3.Dot(transform.up, Vector3.up) < -0.7)
+        if (!flipped && Vector3.Dot(transform.up, Vector3.up) < 0)
         {
+            flipped = true;
             AlterLuck();
         }
     }

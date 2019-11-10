@@ -9,8 +9,7 @@ public class LuckObject : MonoBehaviour
 
     protected void AlterLuck()
     {
-        Debug.Log("AlterLuck");
-        // TODO
+        GameManager.instance.AlterLuck(luckValue, GetMessage());
     }
 
     public string GetMessage()
