@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572b492e36cad4f4ea8bb5536c697f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  luckValue: -5
+  luckValue: -3
   actionText: Broke Mirror
   explosionForce: 7.28
   explosionRadius: 9.74

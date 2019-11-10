@@ -15,7 +15,12 @@ public class CatnipShaker : MonoBehaviour
         if (!hasSpilled && IsTooTilted())
         {
             hasSpilled = true;
-            Instantiate(spillParticle, spillSpawnPoint.position, Quaternion.identity);
+            if (spillParticle != null)
+            {
+
+
+                Instantiate(spillParticle, spillSpawnPoint.position, Quaternion.identity);
+            }
 
             BlackCat[] cats = FindObjectsOfType<BlackCat>();
             for (int i = 0; i < cats.Length; ++i)
@@ -27,7 +32,8 @@ public class CatnipShaker : MonoBehaviour
 
     private bool IsTooTilted()
     {
-        float dot = Vector3.Dot(Vector3.up, transform.up);
+        float dot = Vector3.Dot(Vector3.up, -transform.forward);
+        Debug.Log(dot);
         return dot < tiltThreshold;
     }
 }
