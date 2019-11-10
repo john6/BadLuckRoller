@@ -6,7 +6,7 @@ public class Umbrella : LuckObject
 {
     [SerializeField] private Mesh openRenderMesh;
     [SerializeField] private Mesh openColliderMesh;
-    [SerializeField] private Vector3 bounceVelocity;
+    [SerializeField] private PhysicMaterial openMaterial;
 
     private bool open;
 
@@ -21,10 +21,7 @@ public class Umbrella : LuckObject
                 filter.mesh = openRenderMesh;
                 MeshCollider collider = GetComponent<MeshCollider>();
                 collider.sharedMesh = openColliderMesh;
-            }
-            else
-            {
-                collision.rigidbody.velocity = bounceVelocity;
+                collider.material = openMaterial;
             }
         }
     }

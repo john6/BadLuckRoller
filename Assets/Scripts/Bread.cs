@@ -30,8 +30,10 @@ public class Bread : LuckObject
 
     void Update()
     {
-        if (!flipped && Vector3.Dot(transform.up, Vector3.up) < 0)
+        Debug.Log("Bun Update");
+        if (!flipped && Vector3.Dot(-transform.forward, Vector3.up) < 0)
         {
+            Debug.Log("Flipped");
             flipped = true;
             AlterLuck();
         }

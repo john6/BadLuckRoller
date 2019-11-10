@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currLaunchSpeed;
     [SerializeField] private float currLaunchCharge;
     [SerializeField] private float maxLaunchSpeed;
-    [SerializeField] private GameObject ChargeMeter;
+    [SerializeField] private Image chargeMeter;
     [SerializeField] private float spread;
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
+
         dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
+        Cursor.lockState = CursorLockMode.Locked;
         currLaunchSpeed = 0;
         currLaunchCharge = 0.1f;
         maxLaunchSpeed = 25;
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             launchCharge += currLaunchCharge;
             currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
-            ChargeMeter.GetComponent<Text>().text = "Charge At " + Mathf.RoundToInt((currLaunchSpeed / maxLaunchSpeed) * 100) + "%";
+            chargeMeter.fillAmount = currLaunchSpeed / maxLaunchSpeed;
             yield return null;
         }
         Launch();
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
         body = obj2.GetComponent<Rigidbody>();
         velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
-        ChargeMeter.GetComponent<Text>().text = "Charge At 0%";
+        chargeMeter.fillAmount = 0;
         GameManager.instance.OnDiceThrown(this, obj1, obj2);
     }
 }
