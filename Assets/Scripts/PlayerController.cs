@@ -1,16 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float lookSensitivity;
     [SerializeField] private float maxPitch;
     [SerializeField] private float minPitch;
-    [SerializeField] private float launchSpeed;
+    [SerializeField] private float currLaunchSpeed;
+    [SerializeField] private float currLaunchCharge;
+    [SerializeField] private float maxLaunchSpeed;
+    [SerializeField] private GameObject ChargeMeter;
     [SerializeField] private float spread;
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
+
+
+    public void Start()
+    {
+        currLaunchSpeed = 0;
+        currLaunchCharge = 0.1f;
+        maxLaunchSpeed = 25;
+    }
 
     void Update()
     {
@@ -27,20 +39,35 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Launch();
+            StartCoroutine(ChargeThrow());
         }
+    }
+
+    private IEnumerator ChargeThrow()
+    {
+        float launchCharge = 3.14f;
+        while (!Input.GetButtonUp("Fire1"))
+        {
+            launchCharge += currLaunchCharge ;
+            currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
+            ChargeMeter.GetComponent<Text>().text = "Charge At " + Mathf.RoundToInt((currLaunchSpeed / maxLaunchSpeed) * 100) + "%";
+            yield return null;
+        }
+        Launch();
     }
 
     private void Launch()
     {
         GameObject obj = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
+        //obj.GetComponent<Die>().ViewFollowDie();
         Rigidbody body = obj.GetComponent<Rigidbody>();
-        Vector3 velocity = transform.forward * (launchSpeed + Random.Range(-spread, spread));
+        Vector3 velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
 
         obj = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
         body = obj.GetComponent<Rigidbody>();
-        velocity = transform.forward * (launchSpeed + Random.Range(-spread, spread));
+        velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
+        ChargeMeter.GetComponent<Text>().text = "Charge At 0%";
     }
 }
