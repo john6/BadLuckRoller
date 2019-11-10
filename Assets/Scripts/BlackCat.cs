@@ -19,6 +19,7 @@ public class BlackCat : LuckObject
         if (collider.gameObject.CompareTag("CatBadLuckZone"))
         {
             AlterLuck();
+            AudioManager.instance.Play("Cat");
         }
     }
 

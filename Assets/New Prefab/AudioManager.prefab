@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4086441050567605567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4086441050567605565}
+  - component: {fileID: 4086441050567605564}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4086441050567605565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086441050567605567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3327775, y: 1.4294806, z: -2.6539922}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4086441050567605564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086441050567605567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f786b07c5ad2ca447a891b4678d329b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BadLuck
+    clip: {fileID: 8300000, guid: 91856b7ffafeb1c4a8d9ccae78776389, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Bones
+    clip: {fileID: 8300000, guid: e3732a424fdf4e84eaf93e10e32dff17, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Bread
+    clip: {fileID: 8300000, guid: 7287cc6f66f0bc04e928a09791b73c04, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Can
+    clip: {fileID: 8300000, guid: 682f8e47789c06b4ea1c51749150b0a0, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Cat
+    clip: {fileID: 8300000, guid: 1ca1c0d16709ce342ba3d9beef62fd93, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: CharacterHit
+    clip: {fileID: 8300000, guid: 429d7664c6b4ed6468cbe64561174e6d, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Dice
+    clip: {fileID: 8300000, guid: 8ac38b84c8ce63d41a90dc25548eb17a, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: DiceShake
+    clip: {fileID: 8300000, guid: 3ab8c9fcb7848a344a7f5013ba2231ce, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Mirror
+    clip: {fileID: 8300000, guid: 5513715fcbb86ac4f93ead0be93f55df, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Nice
+    clip: {fileID: 8300000, guid: 2dc3a991e50b99f428bbd793426461d7, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Scissors
+    clip: {fileID: 8300000, guid: 224dbe6abe5f46143bcdf4917f3734c0, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Scissors2
+    clip: {fileID: 8300000, guid: 22d38832f48fa13408d6064128975139, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Umbrella
+    clip: {fileID: 8300000, guid: a8b04849f91df264ebf0069024ddb057, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Yes
+    clip: {fileID: 8300000, guid: 87b29a72f7e5a1f4c871cd41aa500d7f, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}

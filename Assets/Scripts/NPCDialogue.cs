@@ -18,6 +18,7 @@ public class NPCDialogue: MonoBehaviour
             Debug.Log("Dice");
             customText.enabled = true;
             StartCoroutine(StayUp());
+            AudioManager.instance.Play("CharacterHit");
         }
     }
 

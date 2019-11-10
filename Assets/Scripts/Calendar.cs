@@ -46,6 +46,7 @@ public class Calendar : LuckObject
             if (dayOfWeek == DayOfWeek.Friday && day == 13)
             {
                 AlterLuck();
+                AudioManager.instance.Play("Umbrella");
             }
         }
     }

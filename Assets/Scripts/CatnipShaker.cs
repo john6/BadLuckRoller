@@ -21,6 +21,7 @@ public class CatnipShaker : MonoBehaviour
             for (int i = 0; i < cats.Length; ++i)
             {
                 cats[i].MoveTo(transform.position);
+                AudioManager.instance.Play("Bones");
             }
         }
     }
