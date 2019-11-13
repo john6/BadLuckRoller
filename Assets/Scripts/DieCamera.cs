@@ -20,7 +20,7 @@ public class DieCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,7 +33,6 @@ public class DieCamera : MonoBehaviour
             transform.forward = lookOnObject.normalized;
             Vector3 dieLastPosition = currDie.transform.position - lookOnObject.normalized * distanceFromObject;
             Vector3 velocity = currDie.GetComponent<Rigidbody>().velocity;
-            Debug.Log("velocity: " + velocity);
             if (velocity.magnitude <= changeViewThreshold.magnitude)
             {
                 dieLastPosition.y = currDie.transform.position.y + distanceFromObject / 2;

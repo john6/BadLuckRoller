@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Umbrella : LuckObject
 {
-    [SerializeField] private Mesh openRenderMesh;
-    [SerializeField] private Mesh openColliderMesh;
-    [SerializeField] private PhysicMaterial openMaterial;
+    [SerializeField] private GameObject closedObject;
+    [SerializeField] private GameObject openObject;
 
     private bool open;
 
@@ -15,14 +14,10 @@ public class Umbrella : LuckObject
         if (collision.gameObject.CompareTag("Dice"))
         {
             if (!open)
-
             {
                 open = true;
-                MeshFilter filter = GetComponent<MeshFilter>();
-                filter.mesh = openRenderMesh;
-                MeshCollider collider = GetComponent<MeshCollider>();
-                collider.sharedMesh = openColliderMesh;
-                collider.material = openMaterial;
+                closedObject.SetActive(false);
+                openObject.SetActive(true);
                 AudioManager.instance.Play("Umbrella");
             }
         }

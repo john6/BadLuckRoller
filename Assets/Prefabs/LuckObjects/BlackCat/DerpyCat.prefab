@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4640321932082127885
+--- !u!1 &2554912794102630475
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8520500359064671774}
-  - component: {fileID: 821312447526497320}
-  - component: {fileID: 6366236347764019409}
-  - component: {fileID: 4285335404731733542}
-  - component: {fileID: 2058288352}
+  - component: {fileID: 1526586677563259480}
+  - component: {fileID: 7526782446576025710}
+  - component: {fileID: 4271674876085189783}
+  - component: {fileID: 8712647900447248282}
+  - component: {fileID: 7493181478674410541}
+  - component: {fileID: 3150170977078867507}
   m_Layer: 0
-  m_Name: CrapsTableFBX
+  m_Name: DerpyCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8520500359064671774
+--- !u!4 &1526586677563259480
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640321932082127885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 2554912794102630475}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 124.12345, y: 42.785843, z: 124.12345}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &821312447526497320
+--- !u!33 &7526782446576025710
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640321932082127885}
-  m_Mesh: {fileID: 4068373912626513877, guid: b3ca3b551e1ec0e4aae5da3e225ddb26, type: 3}
---- !u!23 &6366236347764019409
+  m_GameObject: {fileID: 2554912794102630475}
+  m_Mesh: {fileID: -5076798556035486163, guid: d49e68285642a874c8a97345c73e157c, type: 3}
+--- !u!23 &4271674876085189783
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640321932082127885}
+  m_GameObject: {fileID: 2554912794102630475}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ecd7b06b341e8a4ba74ce1dda757b91, type: 2}
+  - {fileID: 2100000, guid: af0ee5b85cb53704bbe985d4a98bff51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,31 +81,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4285335404731733542
-MeshCollider:
+--- !u!65 &8712647900447248282
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640321932082127885}
+  m_GameObject: {fileID: 2554912794102630475}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4068373912626513877, guid: b3ca3b551e1ec0e4aae5da3e225ddb26, type: 3}
---- !u!64 &2058288352
-MeshCollider:
+  serializedVersion: 2
+  m_Size: {x: 0.015389435, y: 0.04166101, z: 0.06856762}
+  m_Center: {x: -0.006632502, y: 0.01813386, z: 0.0025958456}
+--- !u!54 &7493181478674410541
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640321932082127885}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 2554912794102630475}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3150170977078867507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554912794102630475}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4068373912626513877, guid: b3ca3b551e1ec0e4aae5da3e225ddb26, type: 3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d771c853e17c4329a2ba530e31dd3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  luckValue: -5
+  actionText: Black Cat
+  moveSpeed: 2
+  stopDistance: 0.5

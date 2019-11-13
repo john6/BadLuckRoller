@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lookSensitivity;
     [SerializeField] private float maxPitch;
     [SerializeField] private float minPitch;
-    [SerializeField] private float currLaunchSpeed;
-    [SerializeField] private float currLaunchCharge = 0.1f;
+    [SerializeField] private float chargeSpeed = 3f;
     [SerializeField] private float maxLaunchSpeed = 25;
     [SerializeField] private Image chargeMeter;
     [SerializeField] private float spread;
@@ -17,10 +16,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform dieSpawnPosition;
     [SerializeField] DieCamera dieCamera;
 
+    private float currLaunchSpeed;
+    private Transform camera;
+    private float pitch;
+
     public void Start()
     {
+        pitch = 0f;
+        camera = GetComponentInChildren<Camera>().transform;
 
-        dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
+        if (dieCamera == null)
+        {
+            dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         currLaunchSpeed = 0;
     }
@@ -33,10 +42,11 @@ public class PlayerController : MonoBehaviour
         float yaw = transform.eulerAngles.y;
         yaw += x * lookSensitivity;
 
-        float pitch = transform.eulerAngles.x;
-        pitch -= Mathf.Clamp(y * lookSensitivity, minPitch, maxPitch);
+        pitch -= y * lookSensitivity;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
-        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+        transform.rotation = Quaternion.Euler(0, yaw, 0f);
+        camera.rotation = Quaternion.Euler(pitch, camera.eulerAngles.y, 0f);
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -49,11 +59,11 @@ public class PlayerController : MonoBehaviour
         float launchCharge = 3.14f;
         while (!Input.GetButtonUp("Fire1"))
         {
-            launchCharge += currLaunchCharge;
+            launchCharge += chargeSpeed * Time.deltaTime;
             currLaunchSpeed = maxLaunchSpeed * ((Mathf.Cos(launchCharge) + 1) / 2);
             chargeMeter.fillAmount = currLaunchSpeed / maxLaunchSpeed;
             yield return null;
-            
+
         }
         Launch();
     }
@@ -63,14 +73,15 @@ public class PlayerController : MonoBehaviour
         GameObject obj1 = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
         Rigidbody body = obj1.GetComponent<Rigidbody>();
         dieCamera.AttachToDie(obj1);
-        Vector3 velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
+        Vector3 velocity = camera.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
-        AudioManager.instance.Play("DiceShake");
 
         GameObject obj2 = Instantiate(die, dieSpawnPosition.position - transform.right * 0.25f, dieSpawnPosition.rotation);
         body = obj2.GetComponent<Rigidbody>();
-        velocity = transform.forward * (currLaunchSpeed + Random.Range(-spread, spread));
+        velocity = camera.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
+
+        AudioManager.instance.Play("DiceShake");
         chargeMeter.fillAmount = 0;
         GameManager.instance.OnDiceThrown(this, obj1, obj2);
     }
