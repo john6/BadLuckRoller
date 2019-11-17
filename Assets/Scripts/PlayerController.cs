@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float spread;
     [SerializeField] private GameObject die;
     [SerializeField] private Transform dieSpawnPosition;
-    [SerializeField] DieCamera dieCamera;
+    //[SerializeField] DieCamera dieCamera;
 
     private float currLaunchSpeed;
     private Transform camera;
@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour
         pitch = 0f;
         camera = GetComponentInChildren<Camera>().transform;
 
-        if (dieCamera == null)
-        {
-            dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
-        }
+        // if (dieCamera == null)
+        // {
+        //     dieCamera = GameObject.FindGameObjectsWithTag("DieCamera")[0].GetComponent<DieCamera>();
+        // }
 
         Cursor.lockState = CursorLockMode.Locked;
         currLaunchSpeed = 0;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject obj1 = Instantiate(die, dieSpawnPosition.position, dieSpawnPosition.rotation);
         Rigidbody body = obj1.GetComponent<Rigidbody>();
-        dieCamera.AttachToDie(obj1);
+        //dieCamera.AttachToDie(obj1);
         Vector3 velocity = camera.forward * (currLaunchSpeed + Random.Range(-spread, spread));
         body.velocity = velocity;
 

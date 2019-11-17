@@ -42,11 +42,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int twoStarPar;
     [SerializeField] private int threeStarPar;
     [SerializeField] private int startingLuck;
+    [SerializeField] private string nextScene;
+    [SerializeField] private string winMessage;
+    [SerializeField] private string lossMessage;
     [SerializeField] private Text luckMessagePrefab;
     [SerializeField] private float luckMessageDuration;
+    [SerializeField] private float diceDisplayDuration;
     [SerializeField] private Transform luckMessageContainer;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject lossScreen;
+    [SerializeField] private Image die1Image;
+    [SerializeField] private Image die2Image;
     [SerializeField] private Text die1Text;
     [SerializeField] private Text die2Text;
     [SerializeField] private Image[] stars;
@@ -89,7 +95,7 @@ public class GameManager : MonoBehaviour
         {
             diceImages[i].gameObject.SetActive(false);
         }
-        player.enabled = false;
+        //player.enabled = false;
 
         StartCoroutine(ShowRoll(player, dice));
     }
@@ -99,9 +105,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void LoadNextScene(string name)
+    public void LoadNextScene()
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(nextScene);
     }
 
     private IEnumerator ShowRoll(PlayerController player, GameObject[] dice)
@@ -116,24 +122,25 @@ public class GameManager : MonoBehaviour
 
         if (luck <= 0)
         {
-            DoWin();
+            yield return StartCoroutine(DoWin(player));
         }
         else if (numThrown >= numThrows)
         {
-            DoLoss();
+            yield return StartCoroutine(DoLoss(player));
         }
         else
         {
-            DoNeutral(player);
+            yield return StartCoroutine(DoNeutral(player));
         }
     }
 
-    private void DoWin()
+    private IEnumerator DoWin(PlayerController player)
     {
         int roll = luck <= -10 ? 13 : 7;
-        ShowRoll(roll);
+        yield return StartCoroutine(ShowRoll(roll));
         winScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        player.enabled = false;
 
         int numStars = 0;
         if (numThrown <= threeStarPar) ++numStars;
@@ -151,14 +158,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void DoLoss()
+    private IEnumerator DoLoss(PlayerController player)
     {
-        ShowRoll(winningRoll);
+        yield return StartCoroutine(ShowRoll(winningRoll));
         lossScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        player.enabled = false;
     }
 
-    private void DoNeutral(PlayerController player)
+    private IEnumerator DoNeutral(PlayerController player)
     {
         List<int> possibles = new List<int>();
         for (int i = 2; i <= 12; ++i)
@@ -172,15 +180,22 @@ public class GameManager : MonoBehaviour
             }
         }
         int roll = Random.Range(0, possibles.Count);
-        ShowRoll(possibles[roll]);
+        yield return StartCoroutine(ShowRoll(possibles[roll]));
 
-        player.enabled = true;
+        //player.enabled = true;
     }
 
-    private void ShowRoll(int roll)
+    private IEnumerator ShowRoll(int roll)
     {
-        int die1 = Random.Range(1, Mathf.Min(roll, 7));
+        int die1 = Random.Range(Mathf.Max(1, roll - 6), Mathf.Min(roll, 7));
+        die1Image.enabled = true;
+        die2Image.enabled = true;
         die1Text.text = "" + die1;
         die2Text.text = "" + (roll - die1);
+        yield return new WaitForSeconds(diceDisplayDuration);
+        die1Image.enabled = false;
+        die2Image.enabled = false;
+        die1Text.text = string.Empty;
+        die2Text.text = string.Empty;
     }
 }
