@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4884114631833745128}
   - component: {fileID: 5028002830529604027}
   m_Layer: 0
-  m_Name: Chip1 With colliders
+  m_Name: ChipBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7435473942659051982}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.917, y: 1.632, z: -0.492}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 7, y: 2, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

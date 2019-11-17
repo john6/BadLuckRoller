@@ -28,7 +28,7 @@ public class DieCamera : MonoBehaviour
     {
         if (viewingDie)
         {
-            Time.timeScale = .4f;
+            Time.timeScale = 1f;
             Vector3 lookOnObject = currDie.transform.position - transform.position;
             transform.forward = lookOnObject.normalized;
             Vector3 dieLastPosition = currDie.transform.position - lookOnObject.normalized * distanceFromObject;
